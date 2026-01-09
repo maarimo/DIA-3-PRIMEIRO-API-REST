@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Id
-public class Professor {
+@Table(name = "professor")
+public class ProfessorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Professor {
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     private List<TurmasEntity> turmas = new ArrayList<>();
 
-    public Professor() {
+    public ProfessorEntity() {
     }
 
     public Long getId() {
@@ -47,7 +47,7 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" +
+        return "ProfessorEntity{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", turmas=" + turmas +
