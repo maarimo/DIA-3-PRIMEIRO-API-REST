@@ -1,7 +1,7 @@
 package com.example.primeiro_api_rest.controller;
 
 import com.example.primeiro_api_rest.entity.TurmasEntity;
-import com.example.primeiro_api_rest.repository.TurmasRepository;
+import com.example.primeiro_api_rest.service.TurmasService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,21 +10,21 @@ import java.util.List;
 @RequestMapping("/turmas")
 public class TurmasController {
 
-    private final TurmasRepository turmasRepository;
+    private final TurmasService turmasService;
 
-    public TurmasController(TurmasRepository turmasRepository) {
-        this.turmasRepository = turmasRepository;
+    public TurmasController(TurmasService turmasService) {
+        this.turmasService = turmasService;
     }
 
     //GET
     @GetMapping
     public List<TurmasEntity> listar(){
-        return turmasRepository.findAll();
+        return turmasService.listar();
     }
 
     //POST
     @PostMapping
     public TurmasEntity criar(@RequestBody TurmasEntity turmas){
-        return turmasRepository.save(turmas);
+        return turmasService.criar(turmas);
     }
 }

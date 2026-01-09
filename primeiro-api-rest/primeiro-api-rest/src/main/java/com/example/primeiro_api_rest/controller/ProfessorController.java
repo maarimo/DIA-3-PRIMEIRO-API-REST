@@ -1,7 +1,7 @@
 package com.example.primeiro_api_rest.controller;
 
 import com.example.primeiro_api_rest.entity.ProfessorEntity;
-import com.example.primeiro_api_rest.repository.ProfessorRepository;
+import com.example.primeiro_api_rest.service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,21 +10,22 @@ import java.util.List;
 @RequestMapping("/professores")
 public class ProfessorController {
 
-    private final ProfessorRepository professorRepository;
+    private final ProfessorService professorService;
 
-    public ProfessorController(ProfessorRepository professorRepository) {
-        this.professorRepository = professorRepository;
+    public ProfessorController(ProfessorService professorService) {
+        this.professorService = professorService;
     }
+
 
     //GET
     @GetMapping
     public List<ProfessorEntity> listar(){
-        return professorRepository.findAll();
+        return professorService.listar();
     }
 
     //POST
     @PostMapping
     public ProfessorEntity criar (@RequestBody ProfessorEntity professor){
-        return professorRepository.save(professor);
+        return professorService.criar(professor);
     }
 }
