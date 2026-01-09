@@ -1,5 +1,7 @@
 package com.example.primeiro_api_rest.controller;
 
+import com.example.primeiro_api_rest.dto.ProfessorCreateDTO;
+import com.example.primeiro_api_rest.dto.ProfessorDTO;
 import com.example.primeiro_api_rest.entity.ProfessorEntity;
 import com.example.primeiro_api_rest.service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +21,14 @@ public class ProfessorController {
 
     //GET
     @GetMapping
-    public List<ProfessorEntity> listar(){
-        return professorService.listar();
+    public List<ProfessorDTO> listar(){
+        return professorService.listarDTO();
     }
 
     //POST
     @PostMapping
-    public ProfessorEntity criar (@RequestBody ProfessorEntity professor){
-        return professorService.criar(professor);
+    public ProfessorDTO criar(@RequestBody ProfessorCreateDTO dto){
+        return professorService.criar(dto);
     }
+
 }
