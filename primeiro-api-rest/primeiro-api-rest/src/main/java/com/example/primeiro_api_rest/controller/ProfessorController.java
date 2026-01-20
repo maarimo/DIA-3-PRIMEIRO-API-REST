@@ -2,7 +2,6 @@ package com.example.primeiro_api_rest.controller;
 
 import com.example.primeiro_api_rest.dto.ProfessorCreateDTO;
 import com.example.primeiro_api_rest.dto.ProfessorDTO;
-import com.example.primeiro_api_rest.entity.ProfessorEntity;
 import com.example.primeiro_api_rest.service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 

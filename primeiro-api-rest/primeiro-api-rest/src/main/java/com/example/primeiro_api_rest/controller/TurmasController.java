@@ -1,6 +1,7 @@
 package com.example.primeiro_api_rest.controller;
 
-import com.example.primeiro_api_rest.entity.TurmasEntity;
+import com.example.primeiro_api_rest.dto.TurmasCreateDTO;
+import com.example.primeiro_api_rest.dto.TurmasDTO;
 import com.example.primeiro_api_rest.service.TurmasService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +19,13 @@ public class TurmasController {
 
     //GET
     @GetMapping
-    public List<TurmasEntity> listar(){
-        return turmasService.listar();
+    public List<TurmasDTO> listarDTO(){
+        return turmasService.listarDTO();
     }
 
     //POST
     @PostMapping
-    public TurmasEntity criar(@RequestBody TurmasEntity turmas){
+    public TurmasDTO criar(@RequestBody TurmasCreateDTO turmas){
         return turmasService.criar(turmas);
     }
 }

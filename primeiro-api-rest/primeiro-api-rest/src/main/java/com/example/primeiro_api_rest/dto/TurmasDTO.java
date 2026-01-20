@@ -1,13 +1,13 @@
 package com.example.primeiro_api_rest.dto;
 
-public class ProfessorDTO {
+public class TurmasDTO {
     private Long id;
     private String nome;
 
-    public ProfessorDTO() {
+    public TurmasDTO() {
     }
 
-    public ProfessorDTO(Long id, String nome) {
+    public TurmasDTO(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
