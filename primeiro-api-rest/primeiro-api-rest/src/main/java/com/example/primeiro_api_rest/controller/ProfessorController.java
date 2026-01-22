@@ -30,4 +30,10 @@ public class ProfessorController {
         return professorService.criar(dto);
     }
 
+    //GETiD
+    @GetMapping("/{id}")
+    public ProfessorDTO buscarPorId(@PathVariable Long id){
+        return professorService.buscarPorId(id);
+    }
+
 }
