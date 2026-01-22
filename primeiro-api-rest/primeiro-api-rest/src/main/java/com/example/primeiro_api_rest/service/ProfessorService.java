@@ -2,6 +2,7 @@ package com.example.primeiro_api_rest.service;
 
 import com.example.primeiro_api_rest.dto.ProfessorCreateDTO;
 import com.example.primeiro_api_rest.dto.ProfessorDTO;
+import com.example.primeiro_api_rest.dto.ProfessorUpdateDTO;
 import com.example.primeiro_api_rest.entity.ProfessorEntity;
 import com.example.primeiro_api_rest.repository.ProfessorRepository;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,17 @@ public class ProfessorService {
                 .orElseThrow(()-> new RuntimeException("Professor não encontrado"));
 
         professorRepository.delete(professor);
+    }
+
+    //UPDATE
+    public ProfessorDTO atualizar(Long id, ProfessorUpdateDTO dto){
+        ProfessorEntity professor = professorRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Professor não encontrado"));
+        professor.setNome(dto.getNome());
+
+        ProfessorEntity atualizado = professorRepository.save(professor);
+
+        return toDTO(atualizado);
     }
 
 }

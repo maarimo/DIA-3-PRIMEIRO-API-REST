@@ -2,6 +2,7 @@ package com.example.primeiro_api_rest.controller;
 
 import com.example.primeiro_api_rest.dto.ProfessorCreateDTO;
 import com.example.primeiro_api_rest.dto.ProfessorDTO;
+import com.example.primeiro_api_rest.dto.ProfessorUpdateDTO;
 import com.example.primeiro_api_rest.service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,15 @@ public class ProfessorController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         professorService.deletar(id);
+    }
+
+    //UPDATE
+    @PutMapping("/{id}")
+    public ProfessorDTO atualizar(
+            @PathVariable Long id,
+            @RequestBody ProfessorUpdateDTO dto
+    ){
+        return professorService.atualizar(id, dto);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.primeiro_api_rest.service;
 
 import com.example.primeiro_api_rest.dto.TurmasCreateDTO;
 import com.example.primeiro_api_rest.dto.TurmasDTO;
+import com.example.primeiro_api_rest.dto.TurmasUpdateDTO;
 import com.example.primeiro_api_rest.entity.ProfessorEntity;
 import com.example.primeiro_api_rest.entity.TurmasEntity;
 import com.example.primeiro_api_rest.repository.ProfessorRepository;
@@ -69,5 +70,16 @@ public class TurmasService {
         TurmasEntity turmas = turmasRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Turma não encontrada"));
         turmasRepository.delete(turmas);
+    }
+
+    //UPDATE
+    public TurmasDTO atualizar(Long id, TurmasUpdateDTO dto){
+        TurmasEntity turmas = turmasRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Turma não encontrada"));
+        turmas.setNome(dto.getNome());
+
+        TurmasEntity atualizada = turmasRepository.save(turmas);
+
+        return toDTO(atualizada);
     }
 }

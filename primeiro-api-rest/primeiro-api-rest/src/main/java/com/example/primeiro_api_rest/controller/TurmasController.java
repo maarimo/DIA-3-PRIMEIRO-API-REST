@@ -2,6 +2,7 @@ package com.example.primeiro_api_rest.controller;
 
 import com.example.primeiro_api_rest.dto.TurmasCreateDTO;
 import com.example.primeiro_api_rest.dto.TurmasDTO;
+import com.example.primeiro_api_rest.dto.TurmasUpdateDTO;
 import com.example.primeiro_api_rest.service.TurmasService;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,14 @@ public class TurmasController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         turmasService.deletar(id);
+    }
+
+    //UPDATE
+    @PutMapping("/{id}")
+    public TurmasDTO atualizar(
+            @PathVariable Long id,
+            @RequestBody TurmasUpdateDTO dto
+    ){
+        return turmasService.atualizar(id, dto);
     }
 }
