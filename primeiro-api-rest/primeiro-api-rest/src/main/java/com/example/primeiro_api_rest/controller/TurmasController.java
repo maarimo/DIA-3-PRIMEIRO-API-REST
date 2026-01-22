@@ -28,4 +28,16 @@ public class TurmasController {
     public TurmasDTO criar(@RequestBody TurmasCreateDTO turmas){
         return turmasService.criar(turmas);
     }
+
+    //GETiD
+    @GetMapping("/{id}")
+    public TurmasDTO buscarPorId(@PathVariable Long id){
+        return turmasService.buscarPorId(id);
+    }
+
+    //DELETE
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        turmasService.deletar(id);
+    }
 }

@@ -47,11 +47,20 @@ public class ProfessorService {
         return toDTO(salvo);
     }
 
-    //
+    //buscarPorId
     public ProfessorDTO buscarPorId(Long id){
         ProfessorEntity professor = professorRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Professor não encontrado"));
 
         return toDTO(professor);
     }
+
+    //DELETE
+    public void deletar(Long id) {
+        ProfessorEntity professor = professorRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Professor não encontrado"));
+
+        professorRepository.delete(professor);
+    }
+
 }

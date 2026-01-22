@@ -55,4 +55,19 @@ public class TurmasService {
 
         return toDTO(salvo);
     }
+
+    //BUSCAR POR ID
+    public TurmasDTO buscarPorId(Long id){
+        TurmasEntity turmas = turmasRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Turma não encontrada"));
+
+        return toDTO(turmas);
+    }
+
+    //DELETE
+    public void deletar(Long id){
+        TurmasEntity turmas = turmasRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Turma não encontrada"));
+        turmasRepository.delete(turmas);
+    }
 }
